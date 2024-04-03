@@ -135,7 +135,8 @@ public class MyRectangle extends Rectangle {
   // ---   are not overlapping or touching, return -1. See the note about not duplicating the code above.
   // --- public boolean touching(Rectangle rect)
   public boolean touching(Rectangle rect){
-     return false;
+     return (this.x >= rect.x && this.x <= rect.x + rect.width || rect.x >= this.x && rect.x <= this.x2) &&
+             (this.y >= rect.y && this.y <= rect.y + rect.height || rect.y >= this.y && rect.y <= this.y2);
   }
   // --- public boolean touching(MyRectangle rect)
   public boolean touching(MyRectangle rect){
