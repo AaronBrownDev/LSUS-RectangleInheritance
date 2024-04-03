@@ -100,9 +100,8 @@ public class MyRectangle extends Rectangle {
   // ---   object of type MyRectangle)
   // --- public int getIntersectArea(Rectangle rect)
   public int getIntersectArea(Rectangle rect){
-      return 0;
-          
-      
+      Rectangle intersectRect = this.intersection(rect);
+      return intersectRect.width * intersectRect.height;
   }
   // --- public int getIntersectArea(MyRectangle rect)
   public int getIntersectArea(MyRectangle rect){
@@ -122,7 +121,7 @@ public class MyRectangle extends Rectangle {
   // ---   are not overlapping or touching, return -1. See the note about not duplicating the code above.
   // --- public boolean touching(Rectangle rect)
   public boolean touching(Rectangle rect){
-      return true;
+     return false;
   }
   // --- public boolean touching(MyRectangle rect)
   public boolean touching(MyRectangle rect){
@@ -139,6 +138,7 @@ public class MyRectangle extends Rectangle {
       }
   }
   // ---   Returns true if the rectangle is wider than taller, false otherwise.
+  
   // --- public boolean isSquare()
     public boolean isSquare(){
       if (this.width == this.height){
