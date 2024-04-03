@@ -49,8 +49,8 @@ public class MyRectangle extends Rectangle {
    * @param scaleY
    */
   public void scaleIt(float scaleX, float scaleY) {
-    //width = (TODO)(TODO * scaleX);
-    //height = (TODO)(TODO * scaleY);
+    // width = (TODO)(TODO * scaleX);
+    // height = (TODO)(TODO * scaleY);
     this.width = (int)(Math.abs(this.x - this.x2) * scaleX);
     this.height = (int)(Math.abs(this.y - this.y2) * scaleY);
     this.x2 = (this.x + this.width);
@@ -63,8 +63,8 @@ public class MyRectangle extends Rectangle {
    */
   public void scaleIt(float scale) {
     // TODO: Scales both width and height
-    //width = (TODO)(TODO * scale);
-    //height = (TODO)(TODO * scale);
+    // width = (TODO)(TODO * scale);
+    // height = (TODO)(TODO * scale);
     this.scaleIt(scale, scale);
   }
 
@@ -83,8 +83,8 @@ public class MyRectangle extends Rectangle {
   
   // --- public int getCombinedArea(Rectangle rect)
   public int getCombinedArea(Rectangle rect){
-      if (this.touching(rect)) {
-          return this.getArea() + rect.height * rect.width;
+      if (this.intersects(rect) || this.touching(rect)) {
+          return (this.getArea() + rect.height * rect.width) - this.getIntersectArea(rect);
       } else {
           return -1;
       }
@@ -111,7 +111,7 @@ public class MyRectangle extends Rectangle {
   // ---   are not overlapping or touching, return -1. See the note about not duplicating the code above.
   // --- public float getPercentIntersect(Rectangle rect)
   public float getPercentIntersect(Rectangle rect){
-      return 0;
+      return (float)this.getIntersectArea(rect) / this.getCombinedArea(rect) + this.getIntersectArea(rect);
   }
   // --- public float getPercentIntersect(MyRectangle rect)
   public float getPercentIntersect(MyRectangle rect){
@@ -131,21 +131,13 @@ public class MyRectangle extends Rectangle {
   // ---   are touching, return true, false otherwise. See the note about not duplicating the code above.
   // --- public boolean isLandscape()
   public boolean isLandscape(){
-      if (this.width > this.height){
-        return true;
-      } else {
-        return false;  
-      }
+      return this.width > this.height;
   }
   // ---   Returns true if the rectangle is wider than taller, false otherwise.
   
   // --- public boolean isSquare()
     public boolean isSquare(){
-      if (this.width == this.height){
-          return true;
-      } else {
-          return false;
-      }
+        return this.width == this.height;
   }
   // ---   Returns true if the width and height of the rectangle are the same, false otherwise.
   
